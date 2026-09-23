@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hesora-official.github.io/hesora-website/sitemap.xml
