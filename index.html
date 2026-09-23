@@ -419,6 +419,218 @@ window.addEventListener("popstate",()=>render(location.hash.slice(1)||"home"));
 window.addEventListener("hashchange",()=>render(location.hash.slice(1)||"home"));
 function setupMouse(){const area=document.getElementById("deviceArea"),device=document.getElementById("device");if(!area||!device)return;area.onmousemove=e=>{const r=area.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;device.style.transform=`rotateY(${-13+x*12}deg) rotateX(${4-y*10}deg) translateY(${y*-8}px)`;document.querySelector(".orb.one").style.transform=`translate(${x*35}px,${y*25}px)`};area.onmouseleave=()=>device.style.transform="rotateY(-13deg) rotateX(4deg)";document.onmousemove=e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;document.querySelector(".orb.two").style.transform=`translate(${x*-25}px,${y*-18}px)`};}
 render(location.hash.slice(1)||"home");
+/* HESORA INTERACTIVE SYSTEM */
+(function(){
+
+  let lastRobotTime = 0;
+
+  function createRobot(x,y,burst=false){
+    const robot=document.createElement("div");
+    robot.className="robot-particle";
+
+    const spread=burst ? 55 : 22;
+    const dx=(Math.random()-.5)*spread;
+    const dy=(Math.random()-.5)*spread;
+
+    robot.style.left=x+"px";
+    robot.style.top=y+"px";
+    robot.style.setProperty("--dx",dx+"px");
+    robot.style.setProperty("--dy",dy+"px");
+    robot.style.setProperty(
+      "--rotation",
+      ((Math.random()-.5)*90)+"deg"
+    );
+
+    document.body.appendChild(robot);
+
+    setTimeout(()=>{
+      robot.remove();
+    },700);
+  }
+
+  document.addEventListener("mousemove",function(e){
+    const now=Date.now();
+
+    if(now-lastRobotTime<55)return;
+
+    lastRobotTime=now;
+    createRobot(e.clientX,e.clientY,false);
+  });
+
+  document.addEventListener("click",function(e){
+    for(let i=0;i<5;i++){
+      createRobot(
+        e.clientX+(Math.random()-.5)*12,
+        e.clientY+(Math.random()-.5)*12,
+        true
+      );
+    }
+  });
+
+  document.addEventListener("touchstart",function(e){
+    if(!e.touches.length)return;
+
+    const t=e.touches[0];
+
+    for(let i=0;i<4;i++){
+      createRobot(
+        t.clientX+(Math.random()-.5)*10,
+        t.clientY+(Math.random()-.5)*10,
+        true
+      );
+    }
+  },{passive:true});
+
+
+  function initSignalCore(){
+
+    const arena=document.getElementById("coreArena");
+    const start=document.getElementById("coreStart");
+    const score=document.getElementById("coreScore");
+    const status=document.querySelector(".gameStatus");
+
+    if(!arena || !start || !score || !status)return;
+
+    if(arena.dataset.ready==="1")return;
+
+    arena.dataset.ready="1";
+
+    let current=0;
+    let active=false;
+
+    function resetGame(){
+      current=0;
+      active=false;
+
+      arena.querySelectorAll(".signalNode").forEach(n=>n.remove());
+
+      score.textContent="0 / 5";
+      status.textContent="READY";
+      start.textContent="INITIALIZE";
+    }
+
+    function spawnNode(){
+
+      arena.querySelectorAll(".signalNode").forEach(n=>n.remove());
+
+      const node=document.createElement("button");
+      node.className="signalNode";
+      node.setAttribute("aria-label","Signal node");
+
+      const angle=Math.random()*Math.PI*2;
+      const radius=35+Math.random()*28;
+
+      const x=50+Math.cos(angle)*radius;
+      const y=50+Math.sin(angle)*radius;
+
+      node.style.left=x+"%";
+      node.style.top=y+"%";
+
+      node.addEventListener("click",function(e){
+        e.stopPropagation();
+
+        current++;
+
+        score.textContent=current+" / 5";
+
+        for(let i=0;i<4;i++){
+          createRobot(
+            e.clientX+(Math.random()-.5)*14,
+            e.clientY+(Math.random()-.5)*14,
+            true
+          );
+        }
+
+        if(current>=5){
+          finishGame();
+        }else{
+          spawnNode();
+        }
+      });
+
+      arena.appendChild(node);
+    }
+
+    function startGame(){
+
+      current=0;
+      active=true;
+
+      score.textContent="0 / 5";
+      status.textContent="ACTIVE";
+      start.textContent="RESET";
+
+      spawnNode();
+    }
+
+    function finishGame(){
+
+      active=false;
+
+      arena.querySelectorAll(".signalNode").forEach(n=>n.remove());
+
+      score.textContent="5 / 5";
+      status.textContent="ONLINE";
+      start.textContent="PLAY AGAIN";
+
+      const message=document.createElement("div");
+      message.className="coreComplete";
+      message.innerHTML="<strong>CORE<br>SYNCHRONIZED</strong><span>HESORA SYSTEM ONLINE</span>";
+
+      arena.appendChild(message);
+
+      for(let i=0;i<10;i++){
+        setTimeout(()=>{
+          const r=arena.getBoundingClientRect();
+
+          createRobot(
+            r.left+r.width/2+(Math.random()-.5)*80,
+            r.top+r.height/2+(Math.random()-.5)*80,
+            true
+          );
+        },i*45);
+      }
+    }
+
+    start.addEventListener("click",function(e){
+      e.stopPropagation();
+
+      if(active){
+        resetGame();
+      }else{
+        arena.querySelectorAll(".coreComplete").forEach(n=>n.remove());
+        startGame();
+      }
+    });
+
+  }
+
+
+  function watchForGame(){
+
+    initSignalCore();
+
+    const app=document.getElementById("app");
+
+    if(!app)return;
+
+    const observer=new MutationObserver(()=>{
+      initSignalCore();
+    });
+
+    observer.observe(app,{
+      childList:true,
+      subtree:true
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",watchForGame);
+  }else{
+    watchForGame();
+  }
+
+})();
 </script>
 </body>
 </html>
