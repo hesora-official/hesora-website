@@ -153,6 +153,160 @@ h1{font-size:clamp(56px,7.5vw,98px);line-height:.91;letter-spacing:-.065em;margi
     display:none;
   }
 }
+/* HESORA Signal Core Game */
+.signalGame{
+  width:100%;
+  height:100%;
+  padding:20px 16px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  color:#e8f7ff;
+  font-family:inherit;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(56,189,248,.12),transparent 34%),
+    linear-gradient(180deg,#07111f,#0a1424);
+}
+
+.gameTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  font-size:7px;
+  letter-spacing:1.4px;
+  color:#7dd3fc;
+}
+
+.gameStatus{
+  padding:4px 6px;
+  border:1px solid rgba(56,189,248,.3);
+  border-radius:20px;
+  color:#38bdf8;
+  font-size:6px;
+}
+
+.gameTitle{
+  margin-top:8px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.gameTitle strong{
+  font-size:21px;
+  line-height:.92;
+  letter-spacing:-.8px;
+}
+
+.gameTitle span{
+  font-size:8px;
+  color:#7891a8;
+  letter-spacing:.3px;
+}
+
+.coreArena{
+  position:relative;
+  width:150px;
+  height:150px;
+  margin:8px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  border:1px solid rgba(56,189,248,.16);
+  background:radial-gradient(circle,rgba(56,189,248,.08),transparent 62%);
+  box-shadow:
+    0 0 35px rgba(56,189,248,.08),
+    inset 0 0 30px rgba(56,189,248,.04);
+}
+
+.coreRing{
+  position:absolute;
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  border:1px solid rgba(56,189,248,.28);
+  border-top-color:#38bdf8;
+  animation:coreSpin 5s linear infinite;
+}
+
+.coreCenter{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:19px;
+  font-weight:800;
+  color:#dff8ff;
+  border:1px solid rgba(56,189,248,.45);
+  background:radial-gradient(circle,#12324b,#08121f);
+  box-shadow:
+    0 0 18px rgba(56,189,248,.25),
+    inset 0 0 14px rgba(56,189,248,.12);
+}
+
+.gameScore{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:9px 10px;
+  border:1px solid rgba(148,163,184,.12);
+  border-radius:9px;
+  background:rgba(255,255,255,.025);
+}
+
+.gameScore span{
+  font-size:7px;
+  letter-spacing:1.2px;
+  color:#71869a;
+}
+
+.gameScore strong{
+  font-size:10px;
+  color:#38bdf8;
+}
+
+.coreStart{
+  width:100%;
+  border:1px solid rgba(56,189,248,.4);
+  border-radius:8px;
+  padding:10px;
+  background:rgba(56,189,248,.08);
+  color:#9ee7ff;
+  font-family:inherit;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.coreStart:hover{
+  background:rgba(56,189,248,.16);
+  box-shadow:0 0 18px rgba(56,189,248,.12);
+}
+
+@keyframes coreSpin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@media(max-width:600px){
+  .coreArena{
+    width:135px;
+    height:135px;
+  }
+
+  .gameTitle strong{
+    font-size:19px;
+  }
+}
 </style>
 </head>
 <body>
