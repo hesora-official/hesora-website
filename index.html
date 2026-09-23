@@ -86,6 +86,73 @@ h1{font-size:clamp(56px,7.5vw,98px);line-height:.91;letter-spacing:-.065em;margi
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
 @media(max-width:900px){.heroGrid,.split,.contact{grid-template-columns:1fr}.deviceWrap{min-height:430px}.cards{grid-template-columns:1fr 1fr}.trust{grid-template-columns:1fr}.links{display:none}.menu{display:block}.mobileLinks.open{display:block}.hero{padding-top:55px}}
 @media(max-width:600px){.wrap{width:min(var(--max),calc(100% - 26px))}.cards{grid-template-columns:1fr}.section{padding:80px 0}.device{width:245px;height:480px}.screen h2{font-size:26px}.heroGrid{gap:15px}h1{font-size:58px}.lead{font-size:16px}.f1{right:-2%}.f2{left:-2%}}
+/* HESORA Interactive Robot Effect */
+.robot-particle{
+  position:fixed;
+  width:7px;
+  height:5px;
+  border-radius:2px 2px 3px 3px;
+  pointer-events:none;
+  z-index:9999;
+  opacity:0;
+  background:linear-gradient(135deg,#38bdf8,#60a5fa);
+  box-shadow:0 0 8px rgba(56,189,248,.45);
+  animation:hesoraRobot .6s ease-out forwards;
+}
+
+.robot-particle::before{
+  content:"";
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#07111f;
+  left:1.5px;
+  top:1px;
+  box-shadow:3px 0 0 #07111f;
+}
+
+.robot-particle::after{
+  content:"";
+  position:absolute;
+  width:1px;
+  height:3px;
+  background:#38bdf8;
+  left:3px;
+  top:-3px;
+  box-shadow:2px 0 0 #38bdf8;
+}
+
+@keyframes hesoraRobot{
+  0%{
+    opacity:0;
+    transform:
+      translate(-50%,-50%)
+      scale(.35)
+      rotate(0deg);
+  }
+
+  15%{
+    opacity:.9;
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(
+        calc(-50% + var(--dx)),
+        calc(-50% + var(--dy))
+      )
+      scale(.15)
+      rotate(var(--rotation));
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .robot-particle{
+    display:none;
+  }
+}
 </style>
 </head>
 <body>
