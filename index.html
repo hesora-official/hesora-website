@@ -211,8 +211,32 @@ return `${nav("home")}
 <div class="reveal"><div class="eyebrow">ANDROID & GOOGLE PLAY SOLUTIONS</div><h1>Android App Development<br><span class="blue">&amp; Google Play Solutions.</span></h1><p class="lead">${pageData.home.sub}</p>
 <div class="actions"><button class="btn primary" onclick="go('services')">Explore Services →</button><button class="btn" onclick="go('contact')">Start a Conversation</button></div>
 <div class="mini"><span>Android Development</span><span>Google Play Support</span><span>App Transformation</span><span>Digital Infrastructure</span></div></div>
-<div class="deviceWrap reveal" id="deviceArea"><div class="device" id="device"><div class="notch"></div><div class="screen"><small>HESORA</small><h2>Your Android.<br>Your Product.<br>Your Reach.</h2><div class="play"></div><div class="bar"></div><div class="bar s"></div><div class="bar"></div><div class="bar xs"></div></div></div><div class="float f1">Android</div><div class="float f2">Google Play</div></div>
-</div></section>
+<div class="deviceWrap reveal" id="deviceArea"><div class="device" id="device"><div class="notch"></div><div class="screen"><div class="signalGame">
+  <div class="gameTop">
+    <small>HESORA // SIGNAL CORE</small>
+    <span class="gameStatus">READY</span>
+  </div>
+
+  <div class="gameTitle">
+    <strong>SYNC<br>THE CORE</strong>
+    <span>Tap the signal nodes.</span>
+  </div>
+
+  <div class="coreArena" id="coreArena">
+    <div class="coreRing"></div>
+    <div class="coreCenter">H</div>
+  </div>
+
+  <div class="gameScore">
+    <span>SYNC</span>
+    <strong id="coreScore">0 / 5</strong>
+  </div>
+
+  <button class="coreStart" id="coreStart">INITIALIZE</button>
+</div>
+</div>
+</div>
+</div>
 <section class="section"><div class="wrap"><div class="sectionHead reveal"><div class="kicker">WHAT WE DO</div><div class="kicker">WHAT WE DO</div><h2>Android Development &amp; Google Play Services.</h2><p class="sub">HESORA combines Android engineering, Google Play workflows and the surrounding digital infrastructure into one practical service layer.</p></div>${serviceCards().split('</article>').slice(0,6).join('</article>')}</div></section>
 <section class="section"><div class="wrap"><div class="split"><div class="panel reveal"><div class="kicker">WHY HESORA</div><h2>Clear work.<br>Real execution.</h2><p class="sub">We focus on what needs to be done, what information is required, what can be changed, and what should not be promised.</p></div><div class="panel reveal"><div class="list">
 ${[["01","Requirement first","We start by understanding the actual technical or publishing problem."],["02","Practical scope","Services are defined around the work rather than vague packages."],["03","Execution","Implementation, configuration and documentation are handled step by step."],["04","Ongoing support","Projects can continue beyond the initial setup when ongoing technical help is needed."]].map(x=>`<div class="listItem"><div class="num">${x[0]}</div><div><strong>${x[1]}</strong><span>${x[2]}</span></div></div>`).join("")}</div></div></div></div></section>
