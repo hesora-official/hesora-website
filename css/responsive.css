@@ -1,0 +1,37 @@
+/* HESORA Responsive Rules */
+
+/* Tablet */
+
+@media (max-width: 1023px) {
+  .section {
+    padding-block: var(--space-11);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .cluster {
+    align-items: stretch;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 24px, var(--container-max));
+  }
+
+  .section {
+    padding-block: var(--space-9);
+  }
+}
