@@ -1,6 +1,186 @@
-/* HESORA Page-Specific Styles */
+/* HESORA Homepage */
 
-/*
-  Page-specific styles will be added here
-  as individual HESORA pages are built.
-*/
+/* Hero */
+
+.hero {
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-13);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-content h1 {
+  margin-top: var(--space-4);
+  max-width: 900px;
+}
+
+.hero-content h1 span {
+  color: var(--color-primary);
+}
+
+.hero-description {
+  max-width: 680px;
+  margin-top: var(--space-6);
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  margin-top: var(--space-7);
+}
+
+.hero-system {
+  position: relative;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-system-core {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  background: var(--color-surface-elevated);
+  box-shadow: 0 0 60px rgba(99, 102, 241, 0.18);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.hero-node {
+  position: absolute;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hero-node-1 {
+  top: 8%;
+  left: 15%;
+}
+
+.hero-node-2 {
+  top: 4%;
+  right: 12%;
+}
+
+.hero-node-3 {
+  top: 45%;
+  right: 0;
+}
+
+.hero-node-4 {
+  bottom: 8%;
+  right: 12%;
+}
+
+.hero-node-5 {
+  bottom: 3%;
+  left: 18%;
+}
+
+.hero-node-6 {
+  top: 46%;
+  left: 0;
+}
+
+/* Homepage cards */
+
+.section .card h3 {
+  margin-top: var(--space-4);
+}
+
+.section .card p {
+  margin-top: var(--space-3);
+}
+
+/* Playground */
+
+.playground-preview {
+  text-align: center;
+}
+
+.playground-preview p,
+.hani-preview p,
+.final-cta p {
+  max-width: 680px;
+  margin: var(--space-4) auto var(--space-6);
+}
+
+/* HANI */
+
+.hani-preview {
+  text-align: center;
+}
+
+/* Final CTA */
+
+.final-cta {
+  text-align: center;
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-11);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-system {
+    min-height: 320px;
+    order: 2;
+  }
+
+  .hero-system-core {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-node-1 {
+    left: 4%;
+  }
+
+  .hero-node-2 {
+    right: 4%;
+  }
+
+  .hero-node-3 {
+    right: 0;
+  }
+
+  .hero-node-6 {
+    left: 0;
+  }
+}

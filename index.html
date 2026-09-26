@@ -85,7 +85,7 @@ button{cursor:pointer}
   position:fixed;inset:0;pointer-events:none;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.grid{
+.legacy-grid{
   position:fixed;inset:0;pointer-events:none;opacity:.22;
   background-image:linear-gradient(rgba(100,160,220,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(100,160,220,.055) 1px,transparent 1px);
   background-size:54px 54px;
@@ -418,15 +418,16 @@ textarea.field{min-height:150px;resize:vertical}
 <link rel="stylesheet" href="css/pages.css">
 <link rel="stylesheet" href="css/utilities.css">
 <link rel="stylesheet" href="css/responsive.css">
+<script src="js/navigation.js"></script>
 </head>
 
 <body>
-<div class="noise"></div>
-<div class="grid"></div>
-<div class="orb one"></div>
-<div class="orb two"></div>
+ 
 <div id="app"></div>
-
+ <script src="js/hani/launcher.js"></script>
+<script src="js/hani/message.js"></script>
+<script src="js/hani/input.js"></script>
+<script src="js/app.js"></script>
 <script>
 const services=[
   ["Google Play Console","Google Play Console setup, configuration and publishing support for Android developers, app publishers and businesses."],
@@ -508,117 +509,310 @@ function serviceCards(){
 function home(){
   return `${nav("home")}
   <main>
+
+    <!-- HERO -->
     <section class="hero">
-      <div class="wrap heroGrid">
-        <div class="reveal">
-          <div class="eyebrow">ANDROID & GOOGLE PLAY SOLUTIONS</div>
-          <h1>Android App Development<br><span class="blue">&amp; Google Play Solutions.</span></h1>
-          <p class="lead">${pageData.home.sub}</p>
-          <div class="actions">
-            <button class="btn primary" onclick="go('services')">Explore Services →</button>
-            <button class="btn" onclick="go('contact')">Start a Conversation</button>
-          </div>
-          <div class="mini">
-            <span>Android Development</span>
-            <span>Google Play Support</span>
-            <span>App Transformation</span>
-            <span>Digital Infrastructure</span>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">BUILD. PUBLISH. OPERATE.</div>
+
+          <h1>
+            Android, Web, Automation
+            <span>& Digital Solutions.</span>
+          </h1>
+
+          <p class="hero-description">
+            HESORA builds, publishes and operates practical digital products,
+            from Android apps and websites to automation, AI and Google Play solutions.
+          </p>
+
+          <div class="cluster hero-actions">
+            <a class="button button-primary" href="#solutions">
+              Explore Solutions
+            </a>
+
+            <a class="button button-secondary" href="#needs">
+              Tell Us What You Need
+            </a>
           </div>
         </div>
 
-        <div class="deviceWrap reveal" id="deviceArea">
-          <div class="device" id="device">
-            <div class="notch"></div>
-            <div class="screen">
-              <div class="puzzleGame">
-                <div class="puzzleTop">
-                  <small>HESORA // MINI PUZZLE</small>
-                  <span class="puzzleStatus">READY</span>
-                </div>
-                <div class="puzzleTitle">
-                  <strong>BUILD THE ANDROID</strong>
-                  <span>Tap two pieces to swap them.</span>
-                </div>
-                <div class="puzzleBoard" id="puzzleBoard"></div>
-                <div class="puzzleHint" id="puzzleHint">See the robot. Tap START to scramble it.</div>
-                <div class="puzzleScore">
-                  <span>MOVES</span>
-                  <strong id="puzzleScore">0</strong>
-                </div>
-                <button class="puzzleStart" id="puzzleStart">START</button>
-              </div>
-            </div>
+        <div class="hero-system" aria-label="HESORA technology system">
+          <div class="hero-system-core">
+            HESORA
           </div>
-          <div class="float f1">Android</div>
-          <div class="float f2">Google Play</div>
+
+          <div class="hero-node hero-node-1">ANDROID</div>
+          <div class="hero-node hero-node-2">WEB</div>
+          <div class="hero-node hero-node-3">API</div>
+          <div class="hero-node hero-node-4">AUTOMATION</div>
+          <div class="hero-node hero-node-5">AI</div>
+          <div class="hero-node hero-node-6">PLAY</div>
         </div>
       </div>
     </section>
 
+    <!-- WHAT DO YOU NEED -->
+    <section class="section" id="needs">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">START HERE</div>
+          <h2>What do you need?</h2>
+          <p>
+            Start with the problem. HESORA helps identify the practical solution.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <a class="card" href="#solutions">
+            <h3>Android App</h3>
+            <p>Build a new Android product or improve an existing app.</p>
+          </a>
+
+          <a class="card" href="#solutions">
+            <h3>Website</h3>
+            <p>Create a business, product, catalogue or conversion-focused website.</p>
+          </a>
+
+          <a class="card" href="#solutions">
+            <h3>Automation</h3>
+            <p>Remove repetitive work and connect the systems you already use.</p>
+          </a>
+
+          <a class="card" href="#solutions">
+            <h3>Google Play</h3>
+            <p>Get practical support around publishing, verification and policy issues.</p>
+          </a>
+
+          <a class="card" href="#solutions">
+            <h3>AI Solution</h3>
+            <p>Use AI where it genuinely improves a workflow, product or process.</p>
+          </a>
+
+          <a class="card" href="#solutions">
+            <h3>Existing Product</h3>
+            <p>Modernize, maintain, troubleshoot or improve what you already have.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM FIRST -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">PROBLEM → SOLUTION</div>
+          <h2>Start with the problem.</h2>
+          <p>
+            We don't begin by forcing a technology onto the problem.
+            We understand the objective first, then identify the simplest practical solution.
+          </p>
+        </div>
+
+        <div class="grid grid-4">
+          <div class="card">
+            <span class="badge">01</span>
+            <h3>Understand</h3>
+            <p>What are you trying to achieve?</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">02</span>
+            <h3>Define</h3>
+            <p>What exists today and what is missing?</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">03</span>
+            <h3>Solve</h3>
+            <p>Choose the smallest practical solution.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">04</span>
+            <h3>Expand</h3>
+            <p>Build a foundation that can grow later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
     <section class="section">
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div class="kicker">WHAT WE DO</div>
-          <h2>Android Development &amp; Google Play Services.</h2>
-          <p class="sub">HESORA combines Android app development, Google Play Console support, app publishing, verification guidance, app maintenance, monetization integration and digital infrastructure into one practical service layer.</p>
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">SOLUTIONS</div>
+          <h2>Solutions for real needs.</h2>
+          <p>
+            Practical starting points for businesses, creators and digital products.
+          </p>
         </div>
-        ${serviceCards()}
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="split">
-          <div class="panel reveal">
-            <div class="kicker">WHY HESORA</div>
-            <h2>Clear work.<br>Real execution.</h2>
-            <p class="sub">We focus on what needs to be done, what information is required, what can be changed, and what should not be promised.</p>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="badge">DIGITAL PRESENCE</span>
+            <h3>Business Website</h3>
+            <p>Establish a clear, professional digital presence.</p>
           </div>
-          <div class="panel reveal">
-            <div class="list">
-              ${[
-                ["01","Requirement first","We start by understanding the actual technical or publishing problem."],
-                ["02","Practical scope","Services are defined around the work rather than vague packages."],
-                ["03","Execution","Implementation, configuration and documentation are handled step by step."],
-                ["04","Ongoing support","Projects can continue beyond the initial setup when ongoing technical help is needed."]
-              ].map(x=>`<div class="listItem"><div class="num">${x[0]}</div><div><strong>${x[1]}</strong><span>${x[2]}</span></div></div>`).join("")}
-            </div>
+
+          <div class="card">
+            <span class="badge">MOBILE</span>
+            <h3>Android MVP</h3>
+            <p>Turn a validated idea into a focused Android product.</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="sectionHead reveal">
-          <div class="kicker">NO FAKE SOCIAL PROOF</div>
-          <h2>Trust through clarity.</h2>
-          <p class="sub">Instead of invented testimonials, client logos or unsupported numbers, HESORA keeps the promise simple: clear scope, honest communication and practical technical work.</p>
-        </div>
-        <div class="trust">
-          <div class="card reveal"><h3>Transparent scope</h3><p>You know what the service covers before work begins.</p></div>
-          <div class="card reveal"><h3>Technical focus</h3><p>Solutions are built around the actual platform, app or infrastructure involved.</p></div>
-          <div class="card reveal"><h3>Long-term mindset</h3><p>We can support the next release, integration or operational step when needed.</p></div>
-        </div>
-      </div>
-    </section>
+          <div class="card">
+            <span class="badge">AUTOMATION</span>
+            <h3>Business Workflow</h3>
+            <p>Connect repetitive tasks and reduce manual work.</p>
+          </div>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="panel reveal" style="text-align:center">
-          <div class="kicker">READY WHEN YOU ARE</div>
-          <h2>Have a problem to solve?</h2>
-          <p class="sub">Send the requirement. We will start from the facts and work from there.</p>
-          <div class="actions" style="justify-content:center">
-            <button class="btn primary" onclick="go('contact')">Contact HESORA →</button>
+          <div class="card">
+            <span class="badge">AI</span>
+            <h3>AI-Assisted Workflow</h3>
+            <p>Add intelligence where conventional automation is not enough.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">GOOGLE PLAY</span>
+            <h3>Publishing Support</h3>
+            <p>Practical support for publishing and Play-related workflows.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">EXISTING PRODUCT</span>
+            <h3>Modernization</h3>
+            <p>Improve, maintain or transform an existing digital product.</p>
           </div>
         </div>
       </div>
     </section>
-  </main>${footer()}`;
-}
 
-function servicesPage(){
+    <!-- CREATOR INTELLIGENCE -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">CREATOR INTELLIGENCE</div>
+          <h2>Understand. Create. Improve.</h2>
+          <p>
+            HESORA's creator tools are designed to turn content data into practical decisions.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <a class="card" href="#creator-intelligence">
+            <span class="badge">01</span>
+            <h3>Social Intelligence</h3>
+            <p>What's happening?</p>
+          </a>
+
+          <a class="card" href="#creator-intelligence">
+            <span class="badge">02</span>
+            <h3>Content Intelligence</h3>
+            <p>What should change?</p>
+          </a>
+
+          <a class="card" href="#creator-intelligence">
+            <span class="badge">03</span>
+            <h3>Prompt Intelligence</h3>
+            <p>How do I create it?</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section class="section">
+      <div class="container">
+        <div class="card playground-preview">
+          <div class="eyebrow">PLAYGROUND</div>
+          <h2>Take a break. Try something.</h2>
+          <p>
+            Small interactive experiments built by HESORA.
+            No signup. No download.
+          </p>
+
+          <a class="button button-secondary" href="#playground">
+            Enter Playground
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW HESORA WORKS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">HOW HESORA WORKS</div>
+          <h2>From idea to operation.</h2>
+        </div>
+
+        <div class="grid grid-4">
+          <div class="card">
+            <span class="badge">01</span>
+            <h3>Understand</h3>
+            <p>We understand the objective and constraints.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">02</span>
+            <h3>Design</h3>
+            <p>We define the practical solution and scope.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">03</span>
+            <h3>Build</h3>
+            <p>We develop, integrate and test.</p>
+          </div>
+
+          <div class="card">
+            <span class="badge">04</span>
+            <h3>Operate</h3>
+            <p>We support publishing, maintenance and improvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HANI -->
+    <section class="section" id="hani">
+      <div class="container">
+        <div class="card hani-preview">
+          <div class="eyebrow">HESORA AI</div>
+          <h2>Not sure where to start?</h2>
+          <p>
+            HANI can help you explain what you're trying to build, publish,
+            improve or solve and prepare the right starting brief.
+          </p>
+
+          <a class="button button-primary" href="contact.html">
+            Start a Conversation
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="card final-cta">
+          <div class="eyebrow">HESORA</div>
+          <h2>Build something useful.</h2>
+          <p>
+            Tell us what you're trying to achieve.
+          </p>
+
+          <a class="button button-primary" href="contact.html">
+            Contact HESORA
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  ${footer()}`;
+}function servicesPage(){
   return `${nav("services")}
   <main>
     <section class="pageHero"><div class="wrap"><div class="kicker">SERVICES</div><h1>${pageData.services.title}</h1><p class="sub">${pageData.services.sub}</p></div></section>
@@ -907,12 +1101,6 @@ function render(page){
   });
 
   window.scrollTo({top:0,behavior:"instant"});
-}
-
-function go(page){
-  history.pushState({},'',`#${page}`);
-  render(page);
-  document.querySelector(".mobileLinks")?.classList.remove("open");
 }
 
 window.addEventListener("popstate",()=>render(location.hash.slice(1)||"home"));
