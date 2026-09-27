@@ -57,7 +57,9 @@ windowElement
   .querySelector(".hani-close")
   .addEventListener("click", closeHani);
   document.body.appendChild(windowElement);
-  createHaniInput();
+
+createHaniQuickActions();
+createHaniInput();
 }
 
 function closeHani() {

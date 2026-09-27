@@ -45,11 +45,21 @@ function createHaniInput() {
     input.value = "";
 
     setTimeout(() => {
-      addHaniMessage(
-        "I can help with that. Tell me a little more about what you want to achieve.",
-        "hani"
-      );
-    }, 400);
+  const state = window.HANI_STATE;
+
+if (!state.intent) {
+  const intent = detectHaniIntent(text);
+
+  updateHaniState({
+    intent: intent
+  });
+} else {
+  processHaniDiscoveryAnswer(text);
+}
+
+const response = getHaniDiscoveryQuestion();
+  addHaniMessage(response, "hani");
+}, 400);
 
     input.focus();
   }
